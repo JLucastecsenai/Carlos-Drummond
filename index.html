@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Notícias - Aeon Style</title>
+    <link rel="shortcur icon" href="assets/"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #f8f7f4;
+            color: #1a1a1a;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e0ddd5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 3%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: normal;
+            letter-spacing: 3px;
+            color: #1a1a1a;
+            text-transform: lowercase;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.7;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .search-btn, .subscribe-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #1a1a1a;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            color: #666;
+            transform: scale(1.05);
+        }
+
+        .subscribe-btn {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            border-radius: 3px;
+        }
+
+        .subscribe-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        nav {
+            border-top: 1px solid #e0ddd5;
+            padding: 1.2rem 3%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1a1a1a;
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: #1a1a1a;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 3%;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        .hero-main {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .hero-main img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-main:hover img {
+            transform: scale(1.05);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            color: #fff;
+            transition: background 0.3s;
+        }
+
+        .hero-main:hover .hero-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        }
+
+        .content-type {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: #f0e5d8;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: normal;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            transition: color 0.3s;
+        }
+
+        .hero-main:hover .hero-title {
+            color: #f0e5d8;
+        }
+
+        .hero-excerpt {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .author {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero-side {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .side-article {
+            cursor: pointer;
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+
+        .side-article:hover {
+            transform: translateX(5px);
+        }
+
+        .side-article img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            transition: transform 0.5s;
+        }
+
+        .side-article:hover img {
+            transform: scale(1.05);
+        }
+
+        .side-title {
+            font-size: 1.5rem;
+            font-weight: normal;
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .side-article:hover .side-title {
+            color: #666;
+        }
+
+        .side-excerpt {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 3%;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .view-all {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.85rem;
+            color: #666;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .view-all:hover {
+            color: #1a1a1a;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid #e0ddd5;
+            margin: 5rem 0 3rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-card {
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            margin-bottom: 1.2rem;
+            transition: transform 0.5s;
+        }
+
+        .article-card:hover .article-image {
+            transform: scale(1.08);
+        }
+
+        .article-type {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: normal;
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            transition: color 0.3s;
+        }
+
+        .article-card:hover .article-title {
+            color: #666;
+        }
+
+        .article-excerpt {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-meta {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.85rem;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .featured-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .featured-article {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .featured-article:hover {
+            background: #fff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .featured-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .featured-article:hover .featured-image {
+            transform: scale(1.05);
+        }
+
+        .video-badge {
+            display: inline-block;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .duration {
+            color: #999;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 2rem 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-track {
+            background: #e0ddd5;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+
+        .horizontal-card {
+            min-width: 350px;
+            scroll-snap-align: start;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .horizontal-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .list-article {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #e0ddd5;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .list-article:hover {
+            background: #fff;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transform: translateX(10px);
+        }
+
+        .list-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .list-article:hover .list-image {
+            transform: scale(1.1);
+        }
+
+        .trending-badge {
+            display: inline-block;
+            background: #d32f2f;
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        footer {
+            background: #fff;
+            border-top: 1px solid #e0ddd5;
+            padding: 3rem 3%;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 2.2;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #1a1a1a;
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e0ddd5;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter input:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+
+        .newsletter button {
+            width: 100%;
+            padding: 0.8rem;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .newsletter button:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .featured-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .list-article {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="logo">pensamento</div>
+            <div class="header-actions">
+                <button class="search-btn">🔍 Buscar</button>
+                <button class="subscribe-btn">Assinar</button>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#ensaios">Ensaios</a></li>
+                <li><a href="#videos">Vídeos</a></li>
+                <li><a href="#filosofia">Filosofia</a></li>
+                <li><a href="#ciencia">Ciência</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#cultura">Cultura</a></li>
+                <li><a href="#sociedade">Sociedade</a></li>
+                <li><a href="#politica">Política</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-main" onclick="openArticle('hero')">
+            <img src="assets/pink-works.webp" alt="Artigo Principal">
+            <div class="hero-overlay">
+                <div class="content-type">ensaio · Filosofia e Consciência</div>
+                <h1 class="hero-title">Pink Works</h1>
+                <p class="hero-excerpt">Trabalhos do Mattheus Rosa. Até mesmo para Filosofia, é necessário ao Ômega que aprenda o "F*** Marquescharlon" <br> Saiba mais!</p>
+                <div class="author">Paulo Mendes · 15 min de leitura</div>
+            </div>
+        </div>
+
+        <div class="hero-side">
+            <article class="side-article" onclick="openArticle('side1')">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop" alt="Tecnologia">
+                <div class="content-type">ensaio · Tecnologia</div>
+                <h2 class="side-title">Inteligência Artificial e o Futuro da Criatividade Humana</h2>
+                <p class="side-excerpt">Como as máquinas estão redefinindo nosso entendimento sobre o que significa ser criativo e original.</p>
+                <div class="author">Marina Costa · 12 min</div>
+            </article>
+
+            <article class="side-article" onclick="openArticle('side2')">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=250&fit=crop" alt="Neurociência">
+                <div class="content-type">ensaio · Neurociência</div>
+                <h2 class="side-title">Memórias Sem Cérebros</h2>
+                <p class="side-excerpt">Certos organismos simples podem tomar decisões e lembrar coisas. O que podemos aprender com eles?</p>
+                <div class="author">Roberto Silva · 10 min</div>
+            </article>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section-header" id="ensaios">
+            <h2 class="section-title">Últimos Ensaios</h2>
+            <a href="#" class="view-all">Ver todos →</a>
+        </div>
+
+        <div class="articles-grid">
+            <article class="article-card" onclick="openArticle('ensaio1')">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=280&fit=crop" class="article-image" alt="Cosmologia">
+                <div class="article-type">ensaio · Cosmologia</div>
+                <h3 class="article-title">Rios de Galáxias</h3>
+                <p class="article-excerpt">Quais são as maiores formas do universo? A resposta pode ser encontrada nos lugares mais simples da Terra.</p>
+                <div class="article-meta">
+                    <span>Carlos Neves</span>
+                    <span>18 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ensaio2')">
+                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=280&fit=crop" class="article-image" alt="Meditação">
+                <div class="article-type">ensaio · Rituais e Celebrações</div>
+                <h3 class="article-title">Uma Vida no Zen</h3>
+                <p class="article-excerpt">Crescendo na Califórnia contracultural, a 'iluminação' tinha um glamour real. Mas décadas de prática mudaram minha perspectiva.</p>
+                <div class="article-meta">
+                    <span>André Lopes</span>
+                    <span>20 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ensaio3')">
+                <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=400&h=280&fit=crop" class="article-image" alt="Biologia">
+                <div class="article-type">ensaio · Biologia</div>
+                <h3 class="article-title">A Linguagem Secreta das Plantas</h3>
+                <p class="article-excerpt">Novas descobertas revelam que as plantas se comunicam de maneiras que nunca imaginamos possíveis.</p>
+                <div class="article-meta">
+                    <span>Juliana Ferreira</span>
+                    <span>14 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ensaio4')">
+                <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=400&h=280&fit=crop" class="article-image" alt="Natureza">
+                <div class="article-type">ensaio · Meio Ambiente</div>
+                <h3 class="article-title">Além de Comida e Pessoas</h3>
+                <p class="article-excerpt">Nietzsche nos mostra como abraçar nossa conexão com a natureza – sem negar seu conflito e sofrimento essenciais.</p>
+                <div class="article-meta">
+                    <span>Ricardo Alves</span>
+                    <span>16 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ensaio5')">
+                <img src="https://images.unsplash.com/photo-1505682634904-d7c8d95cdc50?w=400&h=280&fit=crop" class="article-image" alt="Antropologia">
+                <div class="article-type">ensaio · Antropologia</div>
+                <h3 class="article-title">Adivinhação de Aranhas</h3>
+                <p class="article-excerpt">A vida é complicada. Em Camarões, adivinhos iniciados leem as mensagens de aranhas para desvendar futuros possíveis.</p>
+                <div class="article-meta">
+                    <span>Fernanda Lima</span>
+                    <span>22 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ensaio6')">
+                <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?w=400&h=280&fit=crop" class="article-image" alt="Linguística">
+                <div class="article-type">ensaio · Linguagem e Linguística</div>
+                <h3 class="article-title">A Gramática de um Deus-Oceano</h3>
+                <p class="article-excerpt">Para explorar verdadeiramente línguas alienígenas, os linguistas devem se abrir ao máximo grau concebível de alteridade cósmica.</p>
+                <div class="article-meta">
+                    <span>Gabriel Santos</span>
+                    <span>25 min</span>
+                </div>
+            </article>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-header" id="videos">
+            <h2 class="section-title">Vídeos em Destaque</h2>
+            <a href="#" class="view-all">Ver todos →</a>
+        </div>
+
+        <div class="featured-row">
+            <article class="featured-article" onclick="openArticle('video1')">
+                <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=200&h=200&fit=crop" class="featured-image" alt="Vídeo">
+                <div>
+                    <div class="video-badge">vídeo<span class="duration">12 minutos</span></div>
+                    <div class="article-type">Matemática</div>
+                    <h3 class="article-title">Mergulhe na 'proporção áurea' e separe os mitos da matemática</h3>
+                    <p class="article-excerpt">Uma exploração visual fascinante sobre um dos conceitos mais famosos da matemática.</p>
+                </div>
+            </article>
+
+            <article class="featured-article" onclick="openArticle('video2')">
+                <img src="https://images.unsplash.com/photo-1515705576963-95cad62945b6?w=200&h=200&fit=crop" class="featured-image" alt="Vídeo Arte">
+                <div>
+                    <div class="video-badge">vídeo<span class="duration">18 minutos</span></div>
+                    <div class="article-type">Arte e Estética</div>
+                    <h3 class="article-title">O que torna os sons harmoniosos ou dissonantes?</h3>
+                    <p class="article-excerpt">Uma jornada audiovisual pelos fundamentos da harmonia musical.</p>
+                </div>
+            </article>
+
+            <article class="featured-article" onclick="openArticle('video3')">
+                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=200&h=200&fit=crop" class="featured-image" alt="Vídeo Natureza">
+                <div>
+                    <div class="video-badge">vídeo<span class="duration">15 minutos</span></div>
+                    <div class="article-type">Natureza</div>
+                    <h3 class="article-title">A Vida Secreta das Florestas</h3>
+                    <p class="article-excerpt">Como as árvores se comunicam através de redes subterrâneas complexas.</p>
+                </div>
+            </article>
+
+            <article class="featured-article" onclick="openArticle('video4')">
+                <img src="https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=200&h=200&fit=crop" class="featured-image" alt="Vídeo História">
+                <div>
+                    <div class="video-badge">vídeo<span class="duration">20 minutos</span></div>
+                    <div class="article-type">História</div>
+                    <h3 class="article-title">Civilizações Perdidas do Mediterrâneo</h3>
+                    <p class="article-excerpt">Descobertas arqueológicas recentes revelam sociedades esquecidas.</p>
+                </div>
+            </article>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-header" id="tecnologia">
+            <h2 class="section-title">Tecnologia</h2>
+            <a href="#" class="view-all">Ver todos →</a>
+        </div>
+
+        <div class="horizontal-scroll">
+            <div class="horizontal-card" onclick="openArticle('tech1')">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=350&h=250&fit=crop" class="article-image" alt="Tech">
+                <div class="article-type">Inovação</div>
+                <h3 class="article-title">O Futuro da Computação Quântica</h3>
+                <p class="article-excerpt">Como os computadores quânticos vão revolucionar a ciência e a tecnologia nas próximas décadas.</p>
+                <div class="article-meta">
+                    <span>Lucas Tech</span>
+                    <span>11 min</span>
+                </div>
+            </div>
+
+            <div class="horizontal-card" onclick="openArticle('tech2')">
+                <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=350&h=250&fit=crop" class="article-image" alt="Cybersecurity">
+                <div class="article-type">Segurança Digital</div>
+                <h3 class="article-title">A Nova Era da Privacidade Online</h3>
+                <p class="article-excerpt">Entenda os desafios e soluções para proteger seus dados na internet moderna.</p>
+                <div class="article-meta">
+                    <span>Ana Security</span>
+                    <span>13 min</span>
+                </div>
+            </div>
+
+            <div class="horizontal-card" onclick="openArticle('tech3')">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=350&h=250&fit=crop" class="article-image" alt="Blockchain">
+                <div class="article-type">Blockchain</div>
+                <h3 class="article-title">Além das Criptomoedas</h3>
+                <p class="article-excerpt">Como a tecnologia blockchain está transformando setores além do financeiro.</p>
+                <div class="article-meta">
+                    <span>Pedro Crypto</span>
+                    <span>14 min</span>
+                </div>
+            </div>
+
+            <div class="horizontal-card" onclick="openArticle('tech4')">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=350&h=250&fit=crop" class="article-image" alt="Robotics">
+                <div class="article-type">Robótica</div>
+                <h3 class="article-title">Robôs Entre Nós</h3>
+                <p class="article-excerpt">A convivência entre humanos e máquinas inteligentes já é uma realidade cotidiana.</p>
+                <div class="article-meta">
+                    <span>Sofia Robot</span>
+                    <span>10 min</span>
+                </div>
+            </div>
+
+            <div class="horizontal-card" onclick="openArticle('tech5')">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=350&h=250&fit=crop" class="article-image" alt="Mobile">
+                <div class="article-type">Dispositivos Móveis</div>
+                <h3 class="article-title">A Evolução dos Smartphones</h3>
+                <p class="article-excerpt">De telefones a supercomputadores de bolso: a jornada tecnológica dos últimos 20 anos.</p>
+                <div class="article-meta">
+                    <span>Marcelo Mobile</span>
+                    <span>9 min</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-header" id="ciencia">
+            <h2 class="section-title">Ciência</h2>
+            <a href="#" class="view-all">Ver todos →</a>
+        </div>
+
+        <div class="articles-grid">
+            <article class="article-card" onclick="openArticle('ciencia1')">
+                <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=280&fit=crop" class="article-image" alt="Física">
+                <div class="article-type">ensaio · Física Quântica</div>
+                <h3 class="article-title">O Mistério do Entrelaçamento Quântico</h3>
+                <p class="article-excerpt">Einstein chamou de "ação fantasmagórica à distância". Hoje sabemos que é real e revolucionário.</p>
+                <div class="article-meta">
+                    <span>Dra. Helena Quantum</span>
+                    <span>19 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ciencia2')">
+                <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=400&h=280&fit=crop" class="article-image" alt="Astronomia">
+                <div class="article-type">ensaio · Astronomia</div>
+                <h3 class="article-title">Exoplanetas Habitáveis</h3>
+                <p class="article-excerpt">A busca por mundos que possam abrigar vida está se tornando cada vez mais promissora.</p>
+                <div class="article-meta">
+                    <span>Carlos Astro</span>
+                    <span>17 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ciencia3')">
+                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=280&fit=crop" class="article-image" alt="Medicina">
+                <div class="article-type">ensaio · Medicina</div>
+                <h3 class="article-title">A Revolução da Terapia Genética</h3>
+                <p class="article-excerpt">Como a edição de genes está mudando o tratamento de doenças antes incuráveis.</p>
+                <div class="article-meta">
+                    <span>Dr. Fernando Med</span>
+                    <span>21 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ciencia4')">
+                <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=280&fit=crop" class="article-image" alt="Clima">
+                <div class="article-type">ensaio · Mudanças Climáticas</div>
+                <h3 class="article-title">O Ponto de Não Retorno</h3>
+                <p class="article-excerpt">Cientistas alertam: estamos mais perto do que pensamos de mudanças irreversíveis no clima.</p>
+                <div class="article-meta">
+                    <span>Dra. Beatriz Climate</span>
+                    <span>23 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ciencia5')">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=280&fit=crop" class="article-image" alt="Oceanos">
+                <div class="article-type">ensaio · Oceanografia</div>
+                <h3 class="article-title">Segredos das Profundezas</h3>
+                <p class="article-excerpt">Novas espécies e ecossistemas são descobertos nas regiões mais profundas dos oceanos.</p>
+                <div class="article-meta">
+                    <span>Marina Ocean</span>
+                    <span>15 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('ciencia6')">
+                <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=400&h=280&fit=crop" class="article-image" alt="Neurociência">
+                <div class="article-type">ensaio · Neurociência</div>
+                <h3 class="article-title">Decodificando os Sonhos</h3>
+                <p class="article-excerpt">Pesquisadores estão chegando mais perto de entender e até visualizar nossos sonhos.</p>
+                <div class="article-meta">
+                    <span>Prof. André Neuro</span>
+                    <span>18 min</span>
+                </div>
+            </article>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-header" id="cultura">
+            <h2 class="section-title">Cultura & Artes</h2>
+            <a href="#" class="view-all">Ver todos →</a>
+        </div>
+
+        <div class="list-article" onclick="openArticle('cultura1')">
+            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=150&h=150&fit=crop" class="list-image" alt="Arte Moderna">
+            <div>
+                <span class="trending-badge">📈 Em Alta</span>
+                <div class="article-type">Arte Contemporânea</div>
+                <h3 class="article-title">A Ressignificação da Arte na Era Digital</h3>
+                <p class="article-excerpt">Como NFTs e arte digital estão mudando o mercado de arte e o conceito de propriedade artística.</p>
+                <div class="article-meta">
+                    <span>Laura Art</span>
+                    <span>12 min · Há 2 horas</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-article" onclick="openArticle('cultura2')">
+            <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=150&h=150&fit=crop" class="list-image" alt="Cinema">
+            <div>
+                <div class="article-type">Cinema e Narrativa</div>
+                <h3 class="article-title">O Retorno do Cinema de Autor</h3>
+                <p class="article-excerpt">Diretores independentes ganham espaço em um mercado dominado por franquias e blockbusters.</p>
+                <div class="article-meta">
+                    <span>Rafael Cine</span>
+                    <span>16 min · Há 5 horas</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-article" onclick="openArticle('cultura3')">
+            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=150&h=150&fit=crop" class="list-image" alt="Música">
+            <div>
+                <div class="article-type">Música</div>
+                <h3 class="article-title">Jazz e Improvisação: Uma História de Liberdade</h3>
+                <p class="article-excerpt">Como o jazz influenciou não apenas a música, mas movimentos sociais e culturais ao redor do mundo.</p>
+                <div class="article-meta">
+                    <span>Mônica Jazz</span>
+                    <span>14 min · Há 1 dia</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-article" onclick="openArticle('cultura4')">
+            <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=150&h=150&fit=crop" class="list-image" alt="Literatura">
+            <div>
+                <span class="trending-badge">📈 Em Alta</span>
+                <div class="article-type">Literatura</div>
+                <h3 class="article-title">O Renascimento da Poesia Contemporânea</h3>
+                <p class="article-excerpt">Redes sociais e slams poéticos trazem nova vida a uma das mais antigas formas de arte.</p>
+                <div class="article-meta">
+                    <span>Paulo Poeta</span>
+                    <span>11 min · Há 3 horas</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-article" onclick="openArticle('cultura5')">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=150&h=150&fit=crop" class="list-image" alt="Teatro">
+            <div>
+                <div class="article-type">Teatro</div>
+                <h3 class="article-title">Teatro Imersivo: Quebrando a Quarta Parede</h3>
+                <p class="article-excerpt">Novas produções transformam espectadores em participantes ativos da narrativa teatral.</p>
+                <div class="article-meta">
+                    <span>Isabela Stage</span>
+                    <span>13 min · Há 1 dia</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-header" id="filosofia">
+            <h2 class="section-title">Filosofia & Pensamento</h2>
+            <a href="#" class="view-all">Ver todos →</a>
+        </div>
+
+        <div class="articles-grid">
+            <article class="article-card" onclick="openArticle('filo1')">
+                <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400&h=280&fit=crop" class="article-image" alt="Ética">
+                <div class="article-type">ensaio · Ética</div>
+                <h3 class="article-title">Dilemas Morais da Inteligência Artificial</h3>
+                <p class="article-excerpt">Quando máquinas tomam decisões que afetam vidas humanas, quem é o responsável moral?</p>
+                <div class="article-meta">
+                    <span>Prof. Sérgio Ethics</span>
+                    <span>24 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('filo2')">
+                <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?w=400&h=280&fit=crop" class="article-image" alt="Consciência">
+                <div class="article-type">ensaio · Consciência</div>
+                <h3 class="article-title">O Difícil Problema da Consciência</h3>
+                <p class="article-excerpt">Por que e como a matéria física gera experiências subjetivas? O enigma que desafia cientistas e filósofos.</p>
+                <div class="article-meta">
+                    <span>Dra. Clarice Mind</span>
+                    <span>26 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('filo3')">
+                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=400&h=280&fit=crop" class="article-image" alt="Existencialismo">
+                <div class="article-type">ensaio · Existencialismo</div>
+                <h3 class="article-title">Liberdade e Angústia no Século XXI</h3>
+                <p class="article-excerpt">Como o pensamento existencialista nos ajuda a navegar as ansiedades da vida moderna.</p>
+                <div class="article-meta">
+                    <span>Roberto Exist</span>
+                    <span>20 min</span>
+                </div>
+            </article>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-header" id="sociedade">
+            <h2 class="section-title">Sociedade & Política</h2>
+            <a href="#" class="view-all">Ver todos →</a>
+        </div>
+
+        <div class="articles-grid">
+            <article class="article-card" onclick="openArticle('soc1')">
+                <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=400&h=280&fit=crop" class="article-image" alt="Democracia">
+                <div class="article-type">ensaio · Política</div>
+                <h3 class="article-title">O Futuro da Democracia Digital</h3>
+                <p class="article-excerpt">Como a tecnologia pode fortalecer - ou enfraquecer - as instituições democráticas.</p>
+                <div class="article-meta">
+                    <span>Amanda Polis</span>
+                    <span>22 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('soc2')">
+                <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=400&h=280&fit=crop" class="article-image" alt="Trabalho">
+                <div class="article-type">ensaio · Economia e Trabalho</div>
+                <h3 class="article-title">A Semana de Trabalho de 4 Dias</h3>
+                <p class="article-excerpt">Experimentos ao redor do mundo mostram benefícios de reduzir a jornada de trabalho.</p>
+                <div class="article-meta">
+                    <span>Gustavo Labor</span>
+                    <span>15 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('soc3')">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=280&fit=crop" class="article-image" alt="Educação">
+                <div class="article-type">ensaio · Educação</div>
+                <h3 class="article-title">Repensando a Educação no Século XXI</h3>
+                <p class="article-excerpt">O modelo tradicional de ensino está obsoleto? Educadores propõem novas abordagens.</p>
+                <div class="article-meta">
+                    <span>Profª Cristina Edu</span>
+                    <span>18 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('soc4')">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=280&fit=crop" class="article-image" alt="Urbanismo">
+                <div class="article-type">ensaio · Urbanismo</div>
+                <h3 class="article-title">Cidades para Pessoas, Não Carros</h3>
+                <p class="article-excerpt">O movimento global por cidades mais humanas e sustentáveis ganha força.</p>
+                <div class="article-meta">
+                    <span>Marcela Urban</span>
+                    <span>16 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('soc5')">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=280&fit=crop" class="article-image" alt="Desigualdade">
+                <div class="article-type">ensaio · Justiça Social</div>
+                <h3 class="article-title">A Crescente Desigualdade Global</h3>
+                <p class="article-excerpt">Analisando as causas e consequências da concentração de riqueza no mundo contemporâneo.</p>
+                <div class="article-meta">
+                    <span>Dr. Rodrigo Justice</span>
+                    <span>25 min</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="openArticle('soc6')">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=280&fit=crop" class="article-image" alt="Migração">
+                <div class="article-type">ensaio · Migrações</div>
+                <h3 class="article-title">Histórias de Migração e Pertencimento</h3>
+                <p class="article-excerpt">Vozes de migrantes revelam as complexidades de pertencer a múltiplos mundos.</p>
+                <div class="article-meta">
+                    <span>Fátima Borders</span>
+                    <span>19 min</span>
+                </div>
+            </article>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-header">
+            <h2 class="section-title">Mais Lidas da Semana</h2>
+        </div>
+
+        <div class="list-article" onclick="openArticle('top1')">
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=150&h=150&fit=crop" class="list-image" alt="Top 1">
+            <div>
+                <span class="trending-badge">🔥 #1</span>
+                <div class="article-type">Tecnologia</div>
+                <h3 class="article-title">Como a IA Está Transformando a Criação de Conteúdo</h3>
+                <p class="article-excerpt">Ferramentas de inteligência artificial estão democratizando a criação, mas também levantam questões éticas importantes.</p>
+                <div class="article-meta">
+                    <span>Thiago AI</span>
+                    <span>17 min · 125k leituras</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-article" onclick="openArticle('top2')">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=150&h=150&fit=crop" class="list-image" alt="Top 2">
+            <div>
+                <span class="trending-badge">🔥 #2</span>
+                <div class="article-type">Meio Ambiente</div>
+                <h3 class="article-title">A Última Chance para os Oceanos</h3>
+                <p class="article-excerpt">Cientistas marinhos alertam: temos uma década para reverter os danos causados aos ecossistemas oceânicos.</p>
+                <div class="article-meta">
+                    <span>Dra. Patrícia Sea</span>
+                    <span>21 min · 98k leituras</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-article" onclick="openArticle('top3')">
+            <img src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=150&h=150&fit=crop" class="list-image" alt="Top 3">
+            <div>
+                <span class="trending-badge">🔥 #3</span>
+                <div class="article-type">Psicologia</div>
+                <h3 class="article-title">Solidão na Era da Hiperconexão</h3>
+                <p class="article-excerpt">Por que nos sentimos mais sozinhos mesmo estando mais conectados do que nunca?</p>
+                <div class="article-meta">
+                    <span>Psic. Renata Mind</span>
+                    <span>14 min · 87k leituras</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-article" onclick="openArticle('top4')">
+            <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=150&h=150&fit=crop" class="list-image" alt="Top 4">
+            <div>
+                <span class="trending-badge">🔥 #4</span>
+                <div class="article-type">Ciência</div>
+                <h3 class="article-title">Avanços Surpreendentes na Fusão Nuclear</h3>
+                <p class="article-excerpt">Energia limpa e ilimitada pode estar mais perto da realidade do que imaginávamos.</p>
+                <div class="article-meta">
+                    <span>Dr. Alberto Fusion</span>
+                    <span>20 min · 76k leituras</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-article" onclick="openArticle('top5')">
+            <img src="https://images.unsplash.com/photo-1495954484750-af469f2f9be5?w=150&h=150&fit=crop" class="list-image" alt="Top 5">
+            <div>
+                <span class="trending-badge">🔥 #5</span>
+                <div class="article-type">Cultura</div>
+                <h3 class="article-title">O Retorno dos Livros Físicos</h3>
+                <p class="article-excerpt">Contrariando previsões, vendas de livros impressos crescem entre jovens leitores.</p>
+                <div class="article-meta">
+                    <span>Júlia Books</span>
+                    <span>12 min · 71k leituras</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nós</h3>
+                <ul>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Nossa Missão</a></li>
+                    <li><a href="#">Equipe Editorial</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Trabalhe Conosco</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Conteúdo</h3>
+                <ul>
+                    <li><a href="#ensaios">Ensaios</a></li>
+                    <li><a href="#videos">Vídeos</a></li>
+                    <li><a href="#filosofia">Filosofia</a></li>
+                    <li><a href="#ciencia">Ciência</a></li>
+                    <li><a href="#tecnologia">Tecnologia</a></li>
+                    <li><a href="#cultura">Cultura</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Apoie</h3>
+                <ul>
+                    <li><a href="#">Assinar Premium</a></li>
+                    <li><a href="#">Doar</a></li>
+                    <li><a href="#">Parcerias</a></li>
+                    <li><a href="#">Anuncie</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter Semanal</h3>
+                <p style="color: #666; margin-bottom: 1rem; font-size: 0.9rem;">Receba os melhores artigos direto no seu e-mail</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="seu@email.com">
+                    <button>Inscrever-se</button>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 3rem; color: #999; font-size: 0.85rem; max-width: 1400px; margin: 0 auto;">
+            <p>© 2025 Portal Pensamento. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openArticle(id) {
+            console.log('Abrindo artigo:', id);
+            alert('🔗 Link para a notícia: ' + id + '\n\nEsta notícia seria aberta em uma página dedicada com o conteúdo completo do artigo.');
+        }
+
+        // Smooth scroll para links de navegação
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Adiciona efeito de parallax suave no hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImages = document.querySelectorAll('.hero-main img, .side-article img');
+            heroImages.forEach(img => {
+                img.style.transform = `translateY(${scrolled * 0.1}px)`;
+            });
+        });
+
+        // Animação de entrada dos cards ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.article-card, .list-article, .featured-article').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Efeito de leitura na barra de progresso (scroll)
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            
+            // Você pode adicionar uma barra de progresso aqui se desejar
+            document.body.style.setProperty('--scroll-progress', scrolled + '%');
+        });
+    </script>
+</body>
+</html>
