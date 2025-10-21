@@ -2,14 +2,17 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Notícias - Aeon Style</title>
-    <link rel="shortcur icon" href="assets/"/>
+    <title>Carlos Drummond de Andrade - Poesia, Cidade e Mineração</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
         }
 
         html {
@@ -25,1229 +28,843 @@
         }
 
         header {
-            background: #fff;
-            border-bottom: 1px solid #e0ddd5;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #fff;
+            padding: 3rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        .header-top {
+        .header-content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 3%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 0 3%;
+            text-align: center;
         }
 
-        .logo {
-            font-size: 2.5rem;
+        .site-title {
+            font-size: 2.8rem;
             font-weight: normal;
-            letter-spacing: 3px;
-            color: #1a1a1a;
-            text-transform: lowercase;
-            cursor: pointer;
-            transition: opacity 0.3s;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .logo:hover {
-            opacity: 0.7;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
+        .site-subtitle {
             font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-        }
-
-        .search-btn, .subscribe-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #1a1a1a;
-            font-size: 0.9rem;
-            text-transform: uppercase;
+            font-size: 1.1rem;
+            opacity: 0.9;
             letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .search-btn:hover {
-            color: #666;
-            transform: scale(1.05);
-        }
-
-        .subscribe-btn {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 0.6rem 1.5rem;
-            border-radius: 3px;
-        }
-
-        .subscribe-btn:hover {
-            background: #333;
-            transform: translateY(-2px);
         }
 
         nav {
-            border-top: 1px solid #e0ddd5;
-            padding: 1.2rem 3%;
-            max-width: 1400px;
-            margin: 0 auto;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 3rem;
+            gap: 2.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         nav a {
-            color: #666;
+            color: #fff;
             text-decoration: none;
             font-family: 'Segoe UI', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             transition: all 0.3s;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #1a1a1a;
-            transition: width 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
         }
 
         nav a:hover {
-            color: #1a1a1a;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
         }
 
         .hero-section {
-            max-width: 1400px;
-            margin: 3rem auto;
-            padding: 0 3%;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 3rem;
-        }
-
-        .hero-main {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .hero-main img {
-            width: 100%;
-            height: 550px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .hero-main:hover img {
-            transform: scale(1.05);
-        }
-
-        .hero-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 3rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=1600&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: #fff;
-            transition: background 0.3s;
+            padding: 8rem 3%;
+            text-align: center;
         }
 
-        .hero-main:hover .hero-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-        }
-
-        .content-type {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            color: #f0e5d8;
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .hero-title {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             font-weight: normal;
             line-height: 1.3;
-            margin-bottom: 1rem;
-            transition: color 0.3s;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
         }
 
-        .hero-main:hover .hero-title {
-            color: #f0e5d8;
-        }
-
-        .hero-excerpt {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-        }
-
-        .author {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .hero-side {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        .side-article {
-            cursor: pointer;
-            transition: transform 0.3s;
-            overflow: hidden;
-        }
-
-        .side-article:hover {
-            transform: translateX(5px);
-        }
-
-        .side-article img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            transition: transform 0.5s;
-        }
-
-        .side-article:hover img {
-            transform: scale(1.05);
-        }
-
-        .side-title {
+        .hero-quote {
             font-size: 1.5rem;
-            font-weight: normal;
-            line-height: 1.4;
-            margin-bottom: 0.8rem;
-            transition: color 0.3s;
+            font-style: italic;
+            line-height: 1.6;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .side-article:hover .side-title {
-            color: #666;
-        }
-
-        .side-excerpt {
-            color: #666;
+        .hero-author {
+            font-family: 'Segoe UI', sans-serif;
             font-size: 1rem;
-            margin-bottom: 0.5rem;
+            opacity: 0.8;
+            letter-spacing: 2px;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 4rem 3%;
+            padding: 5rem 3%;
+        }
+
+        .section {
+            margin-bottom: 6rem;
         }
 
         .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #1a1a1a;
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid #2c3e50;
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             font-weight: normal;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: #2c3e50;
+            margin-bottom: 1rem;
         }
 
-        .view-all {
+        .section-subtitle {
             font-family: 'Segoe UI', sans-serif;
-            font-size: 0.85rem;
+            font-size: 1.1rem;
             color: #666;
-            text-decoration: none;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            transition: color 0.3s;
         }
 
-        .view-all:hover {
-            color: #1a1a1a;
-        }
-
-        .section-divider {
-            border: none;
-            border-top: 1px solid #e0ddd5;
-            margin: 5rem 0 3rem;
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .article-card {
-            cursor: pointer;
-            transition: all 0.3s;
-            overflow: hidden;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .article-image {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            margin-bottom: 1.2rem;
-            transition: transform 0.5s;
-        }
-
-        .article-card:hover .article-image {
-            transform: scale(1.08);
-        }
-
-        .article-type {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #999;
-            margin-bottom: 0.8rem;
-        }
-
-        .article-title {
-            font-size: 1.4rem;
-            font-weight: normal;
-            line-height: 1.4;
-            margin-bottom: 0.8rem;
-            color: #1a1a1a;
-            transition: color 0.3s;
-        }
-
-        .article-card:hover .article-title {
-            color: #666;
-        }
-
-        .article-excerpt {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 0.8rem;
-        }
-
-        .article-meta {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.85rem;
-            color: #999;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .featured-row {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin: 3rem 0;
-        }
-
-        .featured-article {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 1rem;
-            border-radius: 5px;
-        }
-
-        .featured-article:hover {
-            background: #fff;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .featured-image {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .featured-article:hover .featured-image {
-            transform: scale(1.05);
-        }
-
-        .video-badge {
-            display: inline-block;
-            background: #1a1a1a;
-            color: #fff;
-            padding: 0.3rem 0.8rem;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.8rem;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        .duration {
-            color: #999;
-            font-size: 0.85rem;
-            margin-left: 0.5rem;
-        }
-
-        .horizontal-scroll {
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
+        .timeline {
+            position: relative;
             padding: 2rem 0;
-            scroll-snap-type: x mandatory;
         }
 
-        .horizontal-scroll::-webkit-scrollbar {
-            height: 8px;
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #2c3e50, #34495e);
         }
 
-        .horizontal-scroll::-webkit-scrollbar-track {
-            background: #e0ddd5;
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
 
-        .horizontal-scroll::-webkit-scrollbar-thumb {
-            background: #1a1a1a;
-            border-radius: 4px;
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 1;
+            text-align: right;
         }
 
-        .horizontal-card {
-            min-width: 350px;
-            scroll-snap-align: start;
-            cursor: pointer;
+        .timeline-item:nth-child(even) .timeline-image {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-image {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #2c3e50;
+            border: 4px solid #f8f7f4;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .timeline-year {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-text {
+            font-size: 1.05rem;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
             transition: transform 0.3s;
         }
 
-        .horizontal-card:hover {
-            transform: translateY(-5px);
+        .timeline-image:hover {
+            transform: scale(1.05);
         }
 
-        .list-article {
+        .phases-grid {
             display: grid;
-            grid-template-columns: 150px 1fr;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid #e0ddd5;
-            cursor: pointer;
-            transition: all 0.3s;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
-        .list-article:hover {
+        .phase-card {
             background: #fff;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
-            transform: translateX(10px);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-left: 5px solid #2c3e50;
         }
 
-        .list-image {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            transition: transform 0.5s;
+        .phase-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .list-article:hover .list-image {
-            transform: scale(1.1);
+        .phase-number {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            opacity: 0.2;
+            margin-bottom: -1rem;
         }
 
-        .trending-badge {
-            display: inline-block;
-            background: #d32f2f;
-            color: #fff;
-            padding: 0.2rem 0.6rem;
-            font-size: 0.65rem;
+        .phase-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-period {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-description {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .phase-themes {
+            background: #f8f7f4;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-themes strong {
+            color: #2c3e50;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+        }
+
+        .poem-box {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .poem-title {
             font-family: 'Segoe UI', sans-serif;
+            font-size: 1.1rem;
+            font-style: normal;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        .itabira-section {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .itabira-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .itabira-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .itabira-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .itabira-text h3 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .impact-card {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+            color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .impact-card:nth-child(2) {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+        }
+
+        .impact-card:nth-child(3) {
+            background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .reflection-box {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .reflection-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reflection-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         footer {
-            background: #fff;
-            border-top: 1px solid #e0ddd5;
+            background: #2c3e50;
+            color: #fff;
             padding: 3rem 3%;
-            margin-top: 5rem;
+            text-align: center;
         }
 
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
         }
 
-        .footer-section h3 {
+        .footer-info {
             font-family: 'Segoe UI', sans-serif;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: #666;
-            text-decoration: none;
             font-size: 0.9rem;
-            line-height: 2.2;
-            transition: color 0.3s;
+            line-height: 2;
+            margin-bottom: 1rem;
         }
 
-        .footer-section a:hover {
-            color: #1a1a1a;
-        }
-
-        .newsletter input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #e0ddd5;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-            transition: border-color 0.3s;
-        }
-
-        .newsletter input:focus {
-            outline: none;
-            border-color: #1a1a1a;
-        }
-
-        .newsletter button {
-            width: 100%;
-            padding: 0.8rem;
-            background: #1a1a1a;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .newsletter button:hover {
-            background: #333;
-            transform: translateY(-2px);
+        .footer-credits {
+            opacity: 0.7;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
 
         @media (max-width: 1024px) {
-            .hero-section {
+            .phases-grid {
                 grid-template-columns: 1fr;
             }
 
-            .articles-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .timeline-item {
+                grid-template-columns: 1fr;
             }
 
-            .featured-row {
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                grid-column: 1;
+                text-align: left;
+                padding-left: 3rem;
+            }
+
+            .timeline-item:nth-child(even) .timeline-image,
+            .timeline-item:nth-child(odd) .timeline-image {
+                grid-column: 1;
+            }
+
+            .itabira-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-cards {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-                gap: 1rem;
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-quote {
+                font-size: 1.2rem;
+            }
+
+            .site-title {
+                font-size: 2rem;
             }
 
             nav ul {
-                gap: 1.5rem;
-            }
-
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-article {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-image {
-                width: 100%;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-title {
-                font-size: 1.8rem;
-            }
-
-            .list-article {
-                grid-template-columns: 1fr;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-top">
-            <div class="logo">pensamento</div>
-            <div class="header-actions">
-                <button class="search-btn">🔍 Buscar</button>
-                <button class="subscribe-btn">Assinar</button>
-            </div>
+        <div class="header-content">
+            <h1 class="site-title">Carlos Drummond de Andrade</h1>
+            <p class="site-subtitle">Poesia, Cidade e Mineração</p>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#biografia">Biografia</a></li>
+                    <li><a href="#fases">Fases Literárias</a></li>
+                    <li><a href="#itabira">Itabira & Mineração</a></li>
+                    <li><a href="#reflexao">Reflexões</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#ensaios">Ensaios</a></li>
-                <li><a href="#videos">Vídeos</a></li>
-                <li><a href="#filosofia">Filosofia</a></li>
-                <li><a href="#ciencia">Ciência</a></li>
-                <li><a href="#tecnologia">Tecnologia</a></li>
-                <li><a href="#cultura">Cultura</a></li>
-                <li><a href="#sociedade">Sociedade</a></li>
-                <li><a href="#politica">Política</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section class="hero-section">
-        <div class="hero-main" onclick="openArticle('hero')">
-            <img src="assets/pink-works.webp" alt="Artigo Principal">
-            <div class="hero-overlay">
-                <div class="content-type">ensaio · Filosofia e Consciência</div>
-                <h1 class="hero-title">Pink Works</h1>
-                <p class="hero-excerpt">Trabalhos do Mattheus Rosa. Até mesmo para Filosofia, é necessário ao Ômega que aprenda o "F*** Marquescharlon" <br> Saiba mais!</p>
-                <div class="author">Paulo Mendes · 15 min de leitura</div>
-            </div>
-        </div>
-
-        <div class="hero-side">
-            <article class="side-article" onclick="openArticle('side1')">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop" alt="Tecnologia">
-                <div class="content-type">ensaio · Tecnologia</div>
-                <h2 class="side-title">Inteligência Artificial e o Futuro da Criatividade Humana</h2>
-                <p class="side-excerpt">Como as máquinas estão redefinindo nosso entendimento sobre o que significa ser criativo e original.</p>
-                <div class="author">Marina Costa · 12 min</div>
-            </article>
-
-            <article class="side-article" onclick="openArticle('side2')">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=250&fit=crop" alt="Neurociência">
-                <div class="content-type">ensaio · Neurociência</div>
-                <h2 class="side-title">Memórias Sem Cérebros</h2>
-                <p class="side-excerpt">Certos organismos simples podem tomar decisões e lembrar coisas. O que podemos aprender com eles?</p>
-                <div class="author">Roberto Silva · 10 min</div>
-            </article>
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <h2 class="hero-title">O Poeta da Pedra</h2>
+            <p class="hero-quote">"No meio do caminho tinha uma pedra<br>tinha uma pedra no meio do caminho<br>tinha uma pedra<br>no meio do caminho tinha uma pedra."</p>
+            <p class="hero-author">— Alguma Poesia, 1928</p>
         </div>
     </section>
 
     <div class="container">
-        <div class="section-header" id="ensaios">
-            <h2 class="section-title">Últimos Ensaios</h2>
-            <a href="#" class="view-all">Ver todos →</a>
-        </div>
-
-        <div class="articles-grid">
-            <article class="article-card" onclick="openArticle('ensaio1')">
-                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=280&fit=crop" class="article-image" alt="Cosmologia">
-                <div class="article-type">ensaio · Cosmologia</div>
-                <h3 class="article-title">Rios de Galáxias</h3>
-                <p class="article-excerpt">Quais são as maiores formas do universo? A resposta pode ser encontrada nos lugares mais simples da Terra.</p>
-                <div class="article-meta">
-                    <span>Carlos Neves</span>
-                    <span>18 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ensaio2')">
-                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=280&fit=crop" class="article-image" alt="Meditação">
-                <div class="article-type">ensaio · Rituais e Celebrações</div>
-                <h3 class="article-title">Uma Vida no Zen</h3>
-                <p class="article-excerpt">Crescendo na Califórnia contracultural, a 'iluminação' tinha um glamour real. Mas décadas de prática mudaram minha perspectiva.</p>
-                <div class="article-meta">
-                    <span>André Lopes</span>
-                    <span>20 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ensaio3')">
-                <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=400&h=280&fit=crop" class="article-image" alt="Biologia">
-                <div class="article-type">ensaio · Biologia</div>
-                <h3 class="article-title">A Linguagem Secreta das Plantas</h3>
-                <p class="article-excerpt">Novas descobertas revelam que as plantas se comunicam de maneiras que nunca imaginamos possíveis.</p>
-                <div class="article-meta">
-                    <span>Juliana Ferreira</span>
-                    <span>14 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ensaio4')">
-                <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=400&h=280&fit=crop" class="article-image" alt="Natureza">
-                <div class="article-type">ensaio · Meio Ambiente</div>
-                <h3 class="article-title">Além de Comida e Pessoas</h3>
-                <p class="article-excerpt">Nietzsche nos mostra como abraçar nossa conexão com a natureza – sem negar seu conflito e sofrimento essenciais.</p>
-                <div class="article-meta">
-                    <span>Ricardo Alves</span>
-                    <span>16 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ensaio5')">
-                <img src="https://images.unsplash.com/photo-1505682634904-d7c8d95cdc50?w=400&h=280&fit=crop" class="article-image" alt="Antropologia">
-                <div class="article-type">ensaio · Antropologia</div>
-                <h3 class="article-title">Adivinhação de Aranhas</h3>
-                <p class="article-excerpt">A vida é complicada. Em Camarões, adivinhos iniciados leem as mensagens de aranhas para desvendar futuros possíveis.</p>
-                <div class="article-meta">
-                    <span>Fernanda Lima</span>
-                    <span>22 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ensaio6')">
-                <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?w=400&h=280&fit=crop" class="article-image" alt="Linguística">
-                <div class="article-type">ensaio · Linguagem e Linguística</div>
-                <h3 class="article-title">A Gramática de um Deus-Oceano</h3>
-                <p class="article-excerpt">Para explorar verdadeiramente línguas alienígenas, os linguistas devem se abrir ao máximo grau concebível de alteridade cósmica.</p>
-                <div class="article-meta">
-                    <span>Gabriel Santos</span>
-                    <span>25 min</span>
-                </div>
-            </article>
-        </div>
-
-        <hr class="section-divider">
-
-        <div class="section-header" id="videos">
-            <h2 class="section-title">Vídeos em Destaque</h2>
-            <a href="#" class="view-all">Ver todos →</a>
-        </div>
-
-        <div class="featured-row">
-            <article class="featured-article" onclick="openArticle('video1')">
-                <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=200&h=200&fit=crop" class="featured-image" alt="Vídeo">
-                <div>
-                    <div class="video-badge">vídeo<span class="duration">12 minutos</span></div>
-                    <div class="article-type">Matemática</div>
-                    <h3 class="article-title">Mergulhe na 'proporção áurea' e separe os mitos da matemática</h3>
-                    <p class="article-excerpt">Uma exploração visual fascinante sobre um dos conceitos mais famosos da matemática.</p>
-                </div>
-            </article>
-
-            <article class="featured-article" onclick="openArticle('video2')">
-                <img src="https://images.unsplash.com/photo-1515705576963-95cad62945b6?w=200&h=200&fit=crop" class="featured-image" alt="Vídeo Arte">
-                <div>
-                    <div class="video-badge">vídeo<span class="duration">18 minutos</span></div>
-                    <div class="article-type">Arte e Estética</div>
-                    <h3 class="article-title">O que torna os sons harmoniosos ou dissonantes?</h3>
-                    <p class="article-excerpt">Uma jornada audiovisual pelos fundamentos da harmonia musical.</p>
-                </div>
-            </article>
-
-            <article class="featured-article" onclick="openArticle('video3')">
-                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=200&h=200&fit=crop" class="featured-image" alt="Vídeo Natureza">
-                <div>
-                    <div class="video-badge">vídeo<span class="duration">15 minutos</span></div>
-                    <div class="article-type">Natureza</div>
-                    <h3 class="article-title">A Vida Secreta das Florestas</h3>
-                    <p class="article-excerpt">Como as árvores se comunicam através de redes subterrâneas complexas.</p>
-                </div>
-            </article>
-
-            <article class="featured-article" onclick="openArticle('video4')">
-                <img src="https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=200&h=200&fit=crop" class="featured-image" alt="Vídeo História">
-                <div>
-                    <div class="video-badge">vídeo<span class="duration">20 minutos</span></div>
-                    <div class="article-type">História</div>
-                    <h3 class="article-title">Civilizações Perdidas do Mediterrâneo</h3>
-                    <p class="article-excerpt">Descobertas arqueológicas recentes revelam sociedades esquecidas.</p>
-                </div>
-            </article>
-        </div>
-
-        <hr class="section-divider">
-
-        <div class="section-header" id="tecnologia">
-            <h2 class="section-title">Tecnologia</h2>
-            <a href="#" class="view-all">Ver todos →</a>
-        </div>
-
-        <div class="horizontal-scroll">
-            <div class="horizontal-card" onclick="openArticle('tech1')">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=350&h=250&fit=crop" class="article-image" alt="Tech">
-                <div class="article-type">Inovação</div>
-                <h3 class="article-title">O Futuro da Computação Quântica</h3>
-                <p class="article-excerpt">Como os computadores quânticos vão revolucionar a ciência e a tecnologia nas próximas décadas.</p>
-                <div class="article-meta">
-                    <span>Lucas Tech</span>
-                    <span>11 min</span>
-                </div>
+        <section class="section" id="biografia">
+            <div class="section-header">
+                <h2 class="section-title">Biografia</h2>
+                <p class="section-subtitle">A trajetória de um dos maiores poetas brasileiros</p>
             </div>
 
-            <div class="horizontal-card" onclick="openArticle('tech2')">
-                <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=350&h=250&fit=crop" class="article-image" alt="Cybersecurity">
-                <div class="article-type">Segurança Digital</div>
-                <h3 class="article-title">A Nova Era da Privacidade Online</h3>
-                <p class="article-excerpt">Entenda os desafios e soluções para proteger seus dados na internet moderna.</p>
-                <div class="article-meta">
-                    <span>Ana Security</span>
-                    <span>13 min</span>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1902</div>
+                        <p class="timeline-text">Carlos Drummond de Andrade nasce em 31 de outubro, em Itabira, Minas Gerais. Filho de fazendeiros, cresce em uma cidade marcada pela mineração de ferro, experiência que moldará profundamente sua poesia.</p>
+                    </div>
+                    <img src="https://i.pinimg.com/736x/50/04/82/5004823a95e2ddf53ec0cc1f458f3b64.jpg" alt="Itabira histórica" class="timeline-image">
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1928</div>
+                        <p class="timeline-text">Publica "Alguma Poesia", sua primeira obra, que causa impacto com o famoso poema "No meio do caminho". O livro marca o início do Modernismo em sua poesia, rompendo com a tradição parnasiana.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=600&h=300&fit=crop" alt="Literatura modernista" class="timeline-image">
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1945</div>
+                        <p class="timeline-text">Lança "A Rosa do Povo", obra de forte engajamento político e social. O poeta expressa suas preocupações com os acontecimentos da Segunda Guerra Mundial e com as questões sociais do Brasil.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&h=300&fit=crop" alt="Contexto histórico" class="timeline-image">
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1951-1984</div>
+                        <p class="timeline-text">Fase madura e memorialista. Publica obras como "Claro Enigma" (1951), "Boitempo" (1968-1979) e outras que exploram a memória, o tempo e a existência humana. Torna-se o poeta mais celebrado do Brasil.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?w=600&h=300&fit=crop" alt="Maturidade literária" class="timeline-image">
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1987</div>
+                        <p class="timeline-text">Drummond falece em 17 de agosto, no Rio de Janeiro, doze dias após a morte de sua filha única, Maria Julieta. Deixa um legado inestimável de mais de 50 livros publicados.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=300&fit=crop" alt="Legado literário" class="timeline-image">
                 </div>
             </div>
+        </section>
 
-            <div class="horizontal-card" onclick="openArticle('tech3')">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=350&h=250&fit=crop" class="article-image" alt="Blockchain">
-                <div class="article-type">Blockchain</div>
-                <h3 class="article-title">Além das Criptomoedas</h3>
-                <p class="article-excerpt">Como a tecnologia blockchain está transformando setores além do financeiro.</p>
-                <div class="article-meta">
-                    <span>Pedro Crypto</span>
-                    <span>14 min</span>
-                </div>
+        <section class="section" id="fases">
+            <div class="section-header">
+                <h2 class="section-title">As Quatro Fases Literárias</h2>
+                <p class="section-subtitle">A evolução poética de Drummond ao longo das décadas</p>
             </div>
 
-            <div class="horizontal-card" onclick="openArticle('tech4')">
-                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=350&h=250&fit=crop" class="article-image" alt="Robotics">
-                <div class="article-type">Robótica</div>
-                <h3 class="article-title">Robôs Entre Nós</h3>
-                <p class="article-excerpt">A convivência entre humanos e máquinas inteligentes já é uma realidade cotidiana.</p>
-                <div class="article-meta">
-                    <span>Sofia Robot</span>
-                    <span>10 min</span>
+            <div class="phases-grid">
+                <div class="phase-card">
+                    <div class="phase-number">01</div>
+                    <h3 class="phase-title">Fase Gauche</h3>
+                    <p class="phase-period">1928-1934</p>
+                    <p class="phase-description">Caracterizada pelo individualismo irônico e pelo sentimento de inadequação ao mundo. O poeta assume uma postura crítica, questionadora e por vezes pessimista diante da realidade.</p>
+                    <div class="phase-themes">
+                        <strong>Temas principais:</strong> Inadaptação social, ironia, ceticismo, conflito entre indivíduo e sociedade, modernização urbana.
+                    </div>
+                    <div class="poem-box">
+                        <div class="poem-title">Poema das Sete Faces (trecho)</div>
+                        "Quando nasci, um anjo torto<br>
+                        desses que vivem na sombra<br>
+                        disse: Vai, Carlos! ser gauche na vida."
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-number">02</div>
+                    <h3 class="phase-title">Fase Social</h3>
+                    <p class="phase-period">1940-1945</p>
+                    <p class="phase-description">Marcada pelo engajamento político e social. Influenciado pela Segunda Guerra Mundial e pelas injustiças sociais, Drummond volta sua poesia para as questões coletivas e históricas.</p>
+                    <div class="phase-themes">
+                        <strong>Temas principais:</strong> Consciência política, solidariedade humana, crítica social, guerra, esperança na transformação social.
+                    </div>
+                    <div class="poem-box">
+                        <div class="poem-title">A Rosa do Povo (trecho)</div>
+                        "E como ficou chato ser moderno.<br>
+                        Agora serei eterno."
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-number">03</div>
+                    <h3 class="phase-title">Fase Metafísica</h3>
+                    <p class="phase-period">1951-1959</p>
+                    <p class="phase-description">Retorno à introspecção, mas com uma perspectiva mais filosófica e existencial. O poeta explora questões sobre o tempo, a morte, o sentido da vida e a condição humana com profundidade reflexiva.</p>
+                    <div class="phase-themes">
+                        <strong>Temas principais:</strong> Existência humana, passagem do tempo, finitude, memória, busca de sentido, transcendência.
+                    </div>
+                    <div class="poem-box">
+                        <div class="poem-title">Claro Enigma (trecho)</div>
+                        "As coisas. Que tristes são as coisas, consideradas sem ênfase."
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-number">04</div>
+                    <h3 class="phase-title">Fase Memorialista</h3>
+                    <p class="phase-period">1960-1987</p>
+                    <p class="phase-description">O poeta revisita suas origens, especialmente Itabira e a infância. A memória torna-se tema central, com reflexões sobre o passado pessoal e coletivo, sempre com lirismo e nostalgia.</p>
+                    <div class="phase-themes">
+                        <strong>Temas principais:</strong> Infância, Itabira, memória afetiva, família, raízes mineiras, transformações do tempo.
+                    </div>
+                    <div class="poem-box">
+                        <div class="poem-title">Boitempo (trecho)</div>
+                        "A máquina do mundo se entreabriu<br>
+                        para quem de a romper já se esquivava<br>
+                        e só de o ter pensado se carpia."
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="horizontal-card" onclick="openArticle('tech5')">
-                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=350&h=250&fit=crop" class="article-image" alt="Mobile">
-                <div class="article-type">Dispositivos Móveis</div>
-                <h3 class="article-title">A Evolução dos Smartphones</h3>
-                <p class="article-excerpt">De telefones a supercomputadores de bolso: a jornada tecnológica dos últimos 20 anos.</p>
-                <div class="article-meta">
-                    <span>Marcelo Mobile</span>
-                    <span>9 min</span>
+        <section class="section" id="itabira">
+            <div class="section-header">
+                <h2 class="section-title">Itabira e a Mineração</h2>
+                <p class="section-subtitle">A cidade de ferro que moldou o poeta</p>
+            </div>
+
+            <div class="itabira-section">
+                <div class="itabira-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=600&h=400&fit=crop" alt="Mineração" class="itabira-image">
+                    </div>
+                    <div class="itabira-text">
+                        <h3>A Cidade Natal</h3>
+                        <p>Itabira, localizada no interior de Minas Gerais, é conhecida como a "Capital do Minério de Ferro". A cidade nasceu e cresceu em torno da exploração mineral, atividade que remonta ao século XVIII.</p>
+                        <p>Para Drummond, Itabira não era apenas sua cidade natal, mas um símbolo complexo que entrelaçava memória pessoal, identidade cultural e crítica social. A mineração aparece em sua obra como metáfora da exploração, da transformação e da perda.</p>
+                    </div>
+                </div>
+
+                <div class="itabira-grid" style="margin-top: 3rem;">
+                    <div class="itabira-text">
+                        <h3>O Ferro na Poesia</h3>
+                        <p>O ferro e a pedra de Itabira permeiam toda a obra drummondiana. Em "Confidência do Itabirano", o poeta declara: "Tive ouro, tive gado, tive fazendas. / Hoje sou funcionário público. / Itabira é apenas uma fotografia na parede."</p>
+                        <p>A mineração representa tanto a riqueza material quanto a devastação ambiental e social. Drummond testemunhou a transformação de sua cidade natal pela indústria mineradora, tema que ganha tons nostálgicos e críticos em seus versos.</p>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600&h=400&fit=crop" alt="Paisagem mineira" class="itabira-image">
+                    </div>
+                </div>
+
+                <div class="impact-cards">
+                    <div class="impact-card">
+                        <div class="impact-icon">🏭</div>
+                        <h4 class="impact-title">Impacto Econômico</h4>
+                        <p class="impact-text">A mineração trouxe desenvolvimento econômico para Itabira, mas também gerou dependência e desigualdade. Drummond critica essa dualidade em sua obra.</p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">🌳</div>
+                        <h4 class="impact-title">Impacto Ambiental</h4>
+                        <p class="impact-text">A exploração mineral transformou radicalmente a paisagem de Itabira. O poeta lamenta a perda das fazendas e da natureza de sua infância.</p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">👥</div>
+                        <h4 class="impact-title">Impacto Social</h4>
+                        <p class="impact-text">A mineração alterou profundamente as relações sociais e a cultura local, temas que Drummond explora com sensibilidade em suas memórias poéticas.</p>
+                    </div>
+                </div>
+
+                <div class="poem-box" style="margin-top: 3rem;">
+                    <div class="poem-title">Confidência do Itabirano</div>
+                    "Alguns anos vivi em Itabira.<br>
+                    Principalmente nasci em Itabira.<br>
+                    Por isso sou triste, orgulhoso: de ferro.<br>
+                    Noventa por cento de ferro nas calçadas.<br>
+                    Oitenta por cento de ferro nas almas.<br><br>
+                    
+                    E esse alheamento do que na vida é porosidade e comunicação.<br><br>
+                    
+                    A vontade de amar, que me paralisa o trabalho,<br>
+                    vem de Itabira, de suas noites brancas, sem mulheres e sem horizontes.<br><br>
+                    
+                    E o hábito de sofrer, que tanto me diverte,<br>
+                    é doce herança itabirana."
                 </div>
             </div>
-        </div>
+        </section>
 
-        <hr class="section-divider">
+        <section class="section" id="reflexao">
+            <div class="section-header">
+                <h2 class="section-title">Reflexões Contemporâneas</h2>
+                <p class="section-subtitle">Drummond e os desafios atuais</p>
+            </div>
 
-        <div class="section-header" id="ciencia">
-            <h2 class="section-title">Ciência</h2>
-            <a href="#" class="view-all">Ver todos →</a>
-        </div>
+            <div class="reflection-box">
+                <h3>A Atualidade de Drummond</h3>
+                <p>A poesia de Carlos Drummond de Andrade permanece surpreendentemente atual. Seus temas atravessam décadas e continuam ressoando com força no século XXI. O sentimento de inadequação do "gauche" se conecta com as ansiedades da vida moderna; sua crítica à mineração antecipa debates ambientais contemporâneos, especialmente após tragédias como as de Mariana (2015) e Brumadinho (2019).</p>
+                
+                <p>A relação conflituosa entre desenvolvimento econômico e preservação ambiental, tão presente em sua obra ao falar de Itabira, tornou-se um dos maiores dilemas da nossa época. A "pedra no meio do caminho" pode ser lida como metáfora dos obstáculos que enfrentamos individual e coletivamente.</p>
+                
+                <p>Drummond nos ensina que a poesia não é fuga da realidade, mas mergulho profundo nela. Sua capacidade de transformar o particular (Itabira, suas memórias) em universal (a condição humana) faz dele um poeta atemporal. Em tempos de polarização, sua busca pelo diálogo entre o eu e o mundo, entre o local e o global, entre a tradição e a modernidade, continua sendo um caminho necessário.</p>
+            </div>
 
-        <div class="articles-grid">
-            <article class="article-card" onclick="openArticle('ciencia1')">
-                <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=280&fit=crop" class="article-image" alt="Física">
-                <div class="article-type">ensaio · Física Quântica</div>
-                <h3 class="article-title">O Mistério do Entrelaçamento Quântico</h3>
-                <p class="article-excerpt">Einstein chamou de "ação fantasmagórica à distância". Hoje sabemos que é real e revolucionário.</p>
-                <div class="article-meta">
-                    <span>Dra. Helena Quantum</span>
-                    <span>19 min</span>
+            <div class="itabira-section" style="margin-top: 3rem;">
+                <h3 style="color: #2c3e50; font-size: 1.8rem; margin-bottom: 2rem;">Drummond e as Tragédias de Mariana e Brumadinho</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
+                    As tragédias ambientais de Mariana (2015) e Brumadinho (2019), causadas pelo rompimento de barragens de mineração em Minas Gerais, trouxeram nova dimensão à crítica drummondiana sobre a exploração mineral. O poeta que nasceu na "cidade de ferro" e viu Itabira ser transformada pela mineração parece ter antecipado literariamente os custos humanos e ambientais dessa atividade.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">
+                    Quando Drummond escrevia sobre o ferro nas almas itabiranas, sobre a perda das fazendas e da paisagem de sua infância, ele não apenas registrava memórias pessoais, mas alertava para um modelo de desenvolvimento que coloca o lucro acima da vida. As 270 mortes e o desastre ambiental de Brumadinho, a apenas 100 km de Itabira, ecoam como confirmação trágica das preocupações do poeta.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+                    A lama que destruiu comunidades e o Rio Doce carrega também a pergunta que Drummond fazia: que desenvolvimento é esse que nos enriquece materialmente enquanto empobrece nossa humanidade? Sua poesia nos convida a repensar nossa relação com a terra, com o progresso e com as gerações futuras.
+                </p>
+            </div>
+
+            <div class="impact-cards" style="margin-top: 3rem;">
+                <div class="impact-card">
+                    <div class="impact-icon">📚</div>
+                    <h4 class="impact-title">Legado Literário</h4>
+                    <p class="impact-text">Drummond deixou mais de 50 livros publicados e é considerado o maior poeta brasileiro do século XX. Sua obra é estudada em escolas e universidades de todo o mundo.</p>
                 </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ciencia2')">
-                <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=400&h=280&fit=crop" class="article-image" alt="Astronomia">
-                <div class="article-type">ensaio · Astronomia</div>
-                <h3 class="article-title">Exoplanetas Habitáveis</h3>
-                <p class="article-excerpt">A busca por mundos que possam abrigar vida está se tornando cada vez mais promissora.</p>
-                <div class="article-meta">
-                    <span>Carlos Astro</span>
-                    <span>17 min</span>
+                <div class="impact-card">
+                    <div class="impact-icon">🌍</div>
+                    <h4 class="impact-title">Consciência Ambiental</h4>
+                    <p class="impact-text">Sua crítica à mineração predatória e à destruição da natureza se revela profética diante dos desastres ambientais contemporâneos em Minas Gerais.</p>
                 </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ciencia3')">
-                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=280&fit=crop" class="article-image" alt="Medicina">
-                <div class="article-type">ensaio · Medicina</div>
-                <h3 class="article-title">A Revolução da Terapia Genética</h3>
-                <p class="article-excerpt">Como a edição de genes está mudando o tratamento de doenças antes incuráveis.</p>
-                <div class="article-meta">
-                    <span>Dr. Fernando Med</span>
-                    <span>21 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ciencia4')">
-                <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=280&fit=crop" class="article-image" alt="Clima">
-                <div class="article-type">ensaio · Mudanças Climáticas</div>
-                <h3 class="article-title">O Ponto de Não Retorno</h3>
-                <p class="article-excerpt">Cientistas alertam: estamos mais perto do que pensamos de mudanças irreversíveis no clima.</p>
-                <div class="article-meta">
-                    <span>Dra. Beatriz Climate</span>
-                    <span>23 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ciencia5')">
-                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=280&fit=crop" class="article-image" alt="Oceanos">
-                <div class="article-type">ensaio · Oceanografia</div>
-                <h3 class="article-title">Segredos das Profundezas</h3>
-                <p class="article-excerpt">Novas espécies e ecossistemas são descobertos nas regiões mais profundas dos oceanos.</p>
-                <div class="article-meta">
-                    <span>Marina Ocean</span>
-                    <span>15 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('ciencia6')">
-                <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=400&h=280&fit=crop" class="article-image" alt="Neurociência">
-                <div class="article-type">ensaio · Neurociência</div>
-                <h3 class="article-title">Decodificando os Sonhos</h3>
-                <p class="article-excerpt">Pesquisadores estão chegando mais perto de entender e até visualizar nossos sonhos.</p>
-                <div class="article-meta">
-                    <span>Prof. André Neuro</span>
-                    <span>18 min</span>
-                </div>
-            </article>
-        </div>
-
-        <hr class="section-divider">
-
-        <div class="section-header" id="cultura">
-            <h2 class="section-title">Cultura & Artes</h2>
-            <a href="#" class="view-all">Ver todos →</a>
-        </div>
-
-        <div class="list-article" onclick="openArticle('cultura1')">
-            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=150&h=150&fit=crop" class="list-image" alt="Arte Moderna">
-            <div>
-                <span class="trending-badge">📈 Em Alta</span>
-                <div class="article-type">Arte Contemporânea</div>
-                <h3 class="article-title">A Ressignificação da Arte na Era Digital</h3>
-                <p class="article-excerpt">Como NFTs e arte digital estão mudando o mercado de arte e o conceito de propriedade artística.</p>
-                <div class="article-meta">
-                    <span>Laura Art</span>
-                    <span>12 min · Há 2 horas</span>
+                <div class="impact-card">
+                    <div class="impact-icon">💭</div>
+                    <h4 class="impact-title">Humanismo Poético</h4>
+                    <p class="impact-text">Drummond colocou o ser humano no centro de sua poesia, com suas contradições, dores e esperanças, criando uma obra profundamente humanista.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="list-article" onclick="openArticle('cultura2')">
-            <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=150&h=150&fit=crop" class="list-image" alt="Cinema">
-            <div>
-                <div class="article-type">Cinema e Narrativa</div>
-                <h3 class="article-title">O Retorno do Cinema de Autor</h3>
-                <p class="article-excerpt">Diretores independentes ganham espaço em um mercado dominado por franquias e blockbusters.</p>
-                <div class="article-meta">
-                    <span>Rafael Cine</span>
-                    <span>16 min · Há 5 horas</span>
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Principais Obras</h2>
+                <p class="section-subtitle">Uma seleção dos livros mais importantes</p>
+            </div>
+
+            <div class="phases-grid">
+                <div class="phase-card">
+                    <h3 class="phase-title">Alguma Poesia (1930)</h3>
+                    <p class="phase-description">Obra de estreia que inclui "No meio do caminho" e "Poema de sete faces". Marca o início do Modernismo na poesia de Drummond com linguagem coloquial e ironia.</p>
+                </div>
+                <div class="phase-card">
+                    <h3 class="phase-title">Sentimento do Mundo (1940)</h3>
+                    <p class="phase-description">Transição para uma poesia mais participante, refletindo as angústias da Segunda Guerra Mundial e as tensões sociais do período.</p>
+                </div>
+                <div class="phase-card">
+                    <h3 class="phase-title">A Rosa do Povo (1945)</h3>
+                    <p class="phase-description">Obra de maior engajamento político e social. Considerada uma das mais importantes da literatura brasileira, expressa solidariedade humana e esperança.</p>
+                </div>
+                <div class="phase-card">
+                    <h3 class="phase-title">Claro Enigma (1951)</h3>
+                    <p class="phase-description">Marca o retorno à introspecção com profundidade filosófica. Poemas sobre o tempo, a morte e o sentido da existência com maestria formal.</p>
+                </div>
+                <div class="phase-card">
+                    <h3 class="phase-title">Boitempo (1968-1979)</h3>
+                    <p class="phase-description">Trilogia memorialista que revisita a infância em Itabira. Recupera pessoas, lugares e episódios com lirismo e nostalgia, celebrando as raízes mineiras.</p>
+                </div>
+                <div class="phase-card">
+                    <h3 class="phase-title">Corpo (1984)</h3>
+                    <p class="phase-description">Uma das últimas obras, trata do corpo e da sensualidade com delicadeza e erotismo, mostrando a vitalidade poética de Drummond até o fim da vida.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="list-article" onclick="openArticle('cultura3')">
-            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=150&h=150&fit=crop" class="list-image" alt="Música">
-            <div>
-                <div class="article-type">Música</div>
-                <h3 class="article-title">Jazz e Improvisação: Uma História de Liberdade</h3>
-                <p class="article-excerpt">Como o jazz influenciou não apenas a música, mas movimentos sociais e culturais ao redor do mundo.</p>
-                <div class="article-meta">
-                    <span>Mônica Jazz</span>
-                    <span>14 min · Há 1 dia</span>
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Galeria de Imagens</h2>
+                <p class="section-subtitle">Itabira, paisagens e contextos históricos</p>
+            </div>
+
+            <div class="phases-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div style="text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=400&h=300&fit=crop" alt="Mineração em Minas Gerais" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; color: #666;">Mineração em Minas Gerais</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Paisagem de Minas Gerais" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; color: #666;">Paisagens mineiras</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=400&h=300&fit=crop" alt="Livros de poesia" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; color: #666;">A poesia modernista</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=400&h=300&fit=crop" alt="Interior mineiro" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; color: #666;">Interior de Minas Gerais</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=400&h=300&fit=crop" alt="Contexto histórico" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; color: #666;">Brasil do século XX</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=300&fit=crop" alt="Céu e nuvens" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; color: #666;">A imensidão poética</p>
                 </div>
             </div>
-        </div>
-
-        <div class="list-article" onclick="openArticle('cultura4')">
-            <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=150&h=150&fit=crop" class="list-image" alt="Literatura">
-            <div>
-                <span class="trending-badge">📈 Em Alta</span>
-                <div class="article-type">Literatura</div>
-                <h3 class="article-title">O Renascimento da Poesia Contemporânea</h3>
-                <p class="article-excerpt">Redes sociais e slams poéticos trazem nova vida a uma das mais antigas formas de arte.</p>
-                <div class="article-meta">
-                    <span>Paulo Poeta</span>
-                    <span>11 min · Há 3 horas</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="list-article" onclick="openArticle('cultura5')">
-            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=150&h=150&fit=crop" class="list-image" alt="Teatro">
-            <div>
-                <div class="article-type">Teatro</div>
-                <h3 class="article-title">Teatro Imersivo: Quebrando a Quarta Parede</h3>
-                <p class="article-excerpt">Novas produções transformam espectadores em participantes ativos da narrativa teatral.</p>
-                <div class="article-meta">
-                    <span>Isabela Stage</span>
-                    <span>13 min · Há 1 dia</span>
-                </div>
-            </div>
-        </div>
-
-        <hr class="section-divider">
-
-        <div class="section-header" id="filosofia">
-            <h2 class="section-title">Filosofia & Pensamento</h2>
-            <a href="#" class="view-all">Ver todos →</a>
-        </div>
-
-        <div class="articles-grid">
-            <article class="article-card" onclick="openArticle('filo1')">
-                <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400&h=280&fit=crop" class="article-image" alt="Ética">
-                <div class="article-type">ensaio · Ética</div>
-                <h3 class="article-title">Dilemas Morais da Inteligência Artificial</h3>
-                <p class="article-excerpt">Quando máquinas tomam decisões que afetam vidas humanas, quem é o responsável moral?</p>
-                <div class="article-meta">
-                    <span>Prof. Sérgio Ethics</span>
-                    <span>24 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('filo2')">
-                <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?w=400&h=280&fit=crop" class="article-image" alt="Consciência">
-                <div class="article-type">ensaio · Consciência</div>
-                <h3 class="article-title">O Difícil Problema da Consciência</h3>
-                <p class="article-excerpt">Por que e como a matéria física gera experiências subjetivas? O enigma que desafia cientistas e filósofos.</p>
-                <div class="article-meta">
-                    <span>Dra. Clarice Mind</span>
-                    <span>26 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('filo3')">
-                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=400&h=280&fit=crop" class="article-image" alt="Existencialismo">
-                <div class="article-type">ensaio · Existencialismo</div>
-                <h3 class="article-title">Liberdade e Angústia no Século XXI</h3>
-                <p class="article-excerpt">Como o pensamento existencialista nos ajuda a navegar as ansiedades da vida moderna.</p>
-                <div class="article-meta">
-                    <span>Roberto Exist</span>
-                    <span>20 min</span>
-                </div>
-            </article>
-        </div>
-
-        <hr class="section-divider">
-
-        <div class="section-header" id="sociedade">
-            <h2 class="section-title">Sociedade & Política</h2>
-            <a href="#" class="view-all">Ver todos →</a>
-        </div>
-
-        <div class="articles-grid">
-            <article class="article-card" onclick="openArticle('soc1')">
-                <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=400&h=280&fit=crop" class="article-image" alt="Democracia">
-                <div class="article-type">ensaio · Política</div>
-                <h3 class="article-title">O Futuro da Democracia Digital</h3>
-                <p class="article-excerpt">Como a tecnologia pode fortalecer - ou enfraquecer - as instituições democráticas.</p>
-                <div class="article-meta">
-                    <span>Amanda Polis</span>
-                    <span>22 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('soc2')">
-                <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=400&h=280&fit=crop" class="article-image" alt="Trabalho">
-                <div class="article-type">ensaio · Economia e Trabalho</div>
-                <h3 class="article-title">A Semana de Trabalho de 4 Dias</h3>
-                <p class="article-excerpt">Experimentos ao redor do mundo mostram benefícios de reduzir a jornada de trabalho.</p>
-                <div class="article-meta">
-                    <span>Gustavo Labor</span>
-                    <span>15 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('soc3')">
-                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=280&fit=crop" class="article-image" alt="Educação">
-                <div class="article-type">ensaio · Educação</div>
-                <h3 class="article-title">Repensando a Educação no Século XXI</h3>
-                <p class="article-excerpt">O modelo tradicional de ensino está obsoleto? Educadores propõem novas abordagens.</p>
-                <div class="article-meta">
-                    <span>Profª Cristina Edu</span>
-                    <span>18 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('soc4')">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=280&fit=crop" class="article-image" alt="Urbanismo">
-                <div class="article-type">ensaio · Urbanismo</div>
-                <h3 class="article-title">Cidades para Pessoas, Não Carros</h3>
-                <p class="article-excerpt">O movimento global por cidades mais humanas e sustentáveis ganha força.</p>
-                <div class="article-meta">
-                    <span>Marcela Urban</span>
-                    <span>16 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('soc5')">
-                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=280&fit=crop" class="article-image" alt="Desigualdade">
-                <div class="article-type">ensaio · Justiça Social</div>
-                <h3 class="article-title">A Crescente Desigualdade Global</h3>
-                <p class="article-excerpt">Analisando as causas e consequências da concentração de riqueza no mundo contemporâneo.</p>
-                <div class="article-meta">
-                    <span>Dr. Rodrigo Justice</span>
-                    <span>25 min</span>
-                </div>
-            </article>
-
-            <article class="article-card" onclick="openArticle('soc6')">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=280&fit=crop" class="article-image" alt="Migração">
-                <div class="article-type">ensaio · Migrações</div>
-                <h3 class="article-title">Histórias de Migração e Pertencimento</h3>
-                <p class="article-excerpt">Vozes de migrantes revelam as complexidades de pertencer a múltiplos mundos.</p>
-                <div class="article-meta">
-                    <span>Fátima Borders</span>
-                    <span>19 min</span>
-                </div>
-            </article>
-        </div>
-
-        <hr class="section-divider">
-
-        <div class="section-header">
-            <h2 class="section-title">Mais Lidas da Semana</h2>
-        </div>
-
-        <div class="list-article" onclick="openArticle('top1')">
-            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=150&h=150&fit=crop" class="list-image" alt="Top 1">
-            <div>
-                <span class="trending-badge">🔥 #1</span>
-                <div class="article-type">Tecnologia</div>
-                <h3 class="article-title">Como a IA Está Transformando a Criação de Conteúdo</h3>
-                <p class="article-excerpt">Ferramentas de inteligência artificial estão democratizando a criação, mas também levantam questões éticas importantes.</p>
-                <div class="article-meta">
-                    <span>Thiago AI</span>
-                    <span>17 min · 125k leituras</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="list-article" onclick="openArticle('top2')">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=150&h=150&fit=crop" class="list-image" alt="Top 2">
-            <div>
-                <span class="trending-badge">🔥 #2</span>
-                <div class="article-type">Meio Ambiente</div>
-                <h3 class="article-title">A Última Chance para os Oceanos</h3>
-                <p class="article-excerpt">Cientistas marinhos alertam: temos uma década para reverter os danos causados aos ecossistemas oceânicos.</p>
-                <div class="article-meta">
-                    <span>Dra. Patrícia Sea</span>
-                    <span>21 min · 98k leituras</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="list-article" onclick="openArticle('top3')">
-            <img src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=150&h=150&fit=crop" class="list-image" alt="Top 3">
-            <div>
-                <span class="trending-badge">🔥 #3</span>
-                <div class="article-type">Psicologia</div>
-                <h3 class="article-title">Solidão na Era da Hiperconexão</h3>
-                <p class="article-excerpt">Por que nos sentimos mais sozinhos mesmo estando mais conectados do que nunca?</p>
-                <div class="article-meta">
-                    <span>Psic. Renata Mind</span>
-                    <span>14 min · 87k leituras</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="list-article" onclick="openArticle('top4')">
-            <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=150&h=150&fit=crop" class="list-image" alt="Top 4">
-            <div>
-                <span class="trending-badge">🔥 #4</span>
-                <div class="article-type">Ciência</div>
-                <h3 class="article-title">Avanços Surpreendentes na Fusão Nuclear</h3>
-                <p class="article-excerpt">Energia limpa e ilimitada pode estar mais perto da realidade do que imaginávamos.</p>
-                <div class="article-meta">
-                    <span>Dr. Alberto Fusion</span>
-                    <span>20 min · 76k leituras</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="list-article" onclick="openArticle('top5')">
-            <img src="https://images.unsplash.com/photo-1495954484750-af469f2f9be5?w=150&h=150&fit=crop" class="list-image" alt="Top 5">
-            <div>
-                <span class="trending-badge">🔥 #5</span>
-                <div class="article-type">Cultura</div>
-                <h3 class="article-title">O Retorno dos Livros Físicos</h3>
-                <p class="article-excerpt">Contrariando previsões, vendas de livros impressos crescem entre jovens leitores.</p>
-                <div class="article-meta">
-                    <span>Júlia Books</span>
-                    <span>12 min · 71k leituras</span>
-                </div>
-            </div>
-        </div>
-
+        </section>
     </div>
 
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>Sobre Nós</h3>
-                <ul>
-                    <li><a href="#">Quem Somos</a></li>
-                    <li><a href="#">Nossa Missão</a></li>
-                    <li><a href="#">Equipe Editorial</a></li>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="#">Trabalhe Conosco</a></li>
-                </ul>
+            <div class="footer-info">
+                <strong>Trabalho Interdisciplinar - 3ª Série Ômega</strong><br>
+                Escola SESI Rinaldo Campos Soares<br>
+                Disciplina: Interdisciplinar (Português e História)<br>
+                Professores: Mattheus Rosa e Sarah
             </div>
-            <div class="footer-section">
-                <h3>Conteúdo</h3>
-                <ul>
-                    <li><a href="#ensaios">Ensaios</a></li>
-                    <li><a href="#videos">Vídeos</a></li>
-                    <li><a href="#filosofia">Filosofia</a></li>
-                    <li><a href="#ciencia">Ciência</a></li>
-                    <li><a href="#tecnologia">Tecnologia</a></li>
-                    <li><a href="#cultura">Cultura</a></li>
-                </ul>
+            <div class="footer-info" style="margin-top: 1.5rem;">
+                <strong>Tema:</strong> Carlos Drummond de Andrade – Poesia, Cidade e Mineração<br>
+                Explorando as conexões entre literatura, história e impacto socioambiental
             </div>
-            <div class="footer-section">
-                <h3>Apoie</h3>
-                <ul>
-                    <li><a href="#">Assinar Premium</a></li>
-                    <li><a href="#">Doar</a></li>
-                    <li><a href="#">Parcerias</a></li>
-                    <li><a href="#">Anuncie</a></li>
-                </ul>
+            <div class="footer-credits">
+                © 2025 - Este site foi desenvolvido como projeto educacional.<br>
+                Todas as informações foram pesquisadas e compiladas pelos alunos.<br>
+                Imagens: Unsplash (uso educacional)
             </div>
-            <div class="footer-section">
-                <h3>Newsletter Semanal</h3>
-                <p style="color: #666; margin-bottom: 1rem; font-size: 0.9rem;">Receba os melhores artigos direto no seu e-mail</p>
-                <div class="newsletter">
-                    <input type="email" placeholder="seu@email.com">
-                    <button>Inscrever-se</button>
-                </div>
-            </div>
-        </div>
-        <div style="text-align: center; padding-top: 3rem; color: #999; font-size: 0.85rem; max-width: 1400px; margin: 0 auto;">
-            <p>© 2025 Portal Pensamento. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
-        function openArticle(id) {
-            console.log('Abrindo artigo:', id);
-            alert('🔗 Link para a notícia: ' + id + '\n\nEsta notícia seria aberta em uma página dedicada com o conteúdo completo do artigo.');
-        }
-
-        // Smooth scroll para links de navegação
+        // Smooth scroll para navegação
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1258,28 +875,19 @@
             });
         });
 
-        // Adiciona efeito de parallax suave no hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroImages = document.querySelectorAll('.hero-main img, .side-article img');
-            heroImages.forEach(img => {
-                img.style.transform = `translateY(${scrolled * 0.1}px)`;
-            });
-        });
-
-        // Animação de entrada dos cards ao scroll
+        // Animação de entrada dos elementos
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
                     entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(30px)';
+                    entry.target.style.transform = 'translateY(40px)';
                     setTimeout(() => {
-                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.transition = 'all 0.8s ease';
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
                     }, 100);
@@ -1288,18 +896,39 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.article-card, .list-article, .featured-article').forEach(card => {
-            observer.observe(card);
+        document.querySelectorAll('.phase-card, .timeline-item, .impact-card, .itabira-section').forEach(element => {
+            observer.observe(element);
         });
 
-        // Efeito de leitura na barra de progresso (scroll)
+        // Efeito parallax suave no hero
         window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-section');
+            if(hero && scrolled < window.innerHeight) {
+                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            }
+        });
+
+        // Destaque da navegação ativa
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('nav a');
             
-            // Você pode adicionar uma barra de progresso aqui se desejar
-            document.body.style.setProperty('--scroll-progress', scrolled + '%');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.background = '';
+                if(link.getAttribute('href') === '#' + current) {
+                    link.style.background = 'rgba(255,255,255,0.2)';
+                }
+            });
         });
     </script>
 </body>
