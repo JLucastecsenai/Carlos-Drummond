@@ -6,510 +6,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Carlos Drummond de Andrade - Poesia, Cidade e Mineração</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Roboto", sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Georgia, 'Times New Roman', serif;
-            background: #f8f7f4;
-            color: #1a1a1a;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: #fff;
-            padding: 3rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 3%;
-            text-align: center;
-        }
-
-        .site-title {
-            font-size: 2.8rem;
-            font-weight: normal;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .site-subtitle {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.1rem;
-            opacity: 0.9;
-            letter-spacing: 1px;
-        }
-
-        nav {
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 1.5rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-        }
-
-        nav a:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
-        }
- 
-        .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
-                  url('img/banner.png'); 
-            
-            background-position: center;
-            background-attachment: fixed;
-            color: #fff;
-            padding: 8rem 3%;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: normal;
-            line-height: 1.3;
-            margin-bottom: 2rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-        }
-
-        .hero-quote {
-            font-size: 1.5rem;
-            font-style: italic;
-            line-height: 1.6;
-            opacity: 0.95;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-author {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1rem;
-            opacity: 0.8;
-            letter-spacing: 2px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 5rem 3%;
-        }
-
-        .section {
-            margin-bottom: 6rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 3px solid #2c3e50;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: normal;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.1rem;
-            color: #666;
-            letter-spacing: 1px;
-        }
-
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, #2c3e50, #34495e);
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            grid-column: 1;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) .timeline-image {
-            grid-column: 2;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            grid-column: 2;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-image {
-            grid-column: 1;
-            grid-row: 1;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 2rem;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #2c3e50;
-            border: 4px solid #f8f7f4;
-            border-radius: 50%;
-            z-index: 10;
-        }
-
-        .timeline-year {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-text {
-            font-size: 1.05rem;
-            color: #333;
-            line-height: 1.8;
-        }
-
-        .timeline-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
-        }
-
-        .timeline-image:hover {
-            transform: scale(0.9);
-        }
-
-        .phases-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .phase-card {
-            background: #fff;
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            border-left: 5px solid #2c3e50;
-        }
-
-        .phase-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .phase-number {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 3rem;
-            font-weight: bold;
-            color: #2c3e50;
-            opacity: 0.2;
-            margin-bottom: -1rem;
-        }
-
-        .phase-title {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .phase-period {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-        }
-
-        .phase-description {
-            font-size: 1.05rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .phase-themes {
-            background: #f8f7f4;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1.5rem;
-        }
-
-        .phase-themes strong {
-            color: #2c3e50;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .poem-box {
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-            color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            font-style: italic;
-            line-height: 1.8;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .poem-title {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.1rem;
-            font-style: normal;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            letter-spacing: 1px;
-        }
-
-        .itabira-section {
-            background: #fff;
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .itabira-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .itabira-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        }
-
-        .itabira-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #333;
-        }
-
-        .itabira-text h3 {
-            color: #2c3e50;
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .impact-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .impact-card {
-            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
-            color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .impact-card:nth-child(2) {
-            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
-        }
-
-        .impact-card:nth-child(3) {
-            background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
-        }
-
-        .impact-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .impact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .impact-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .impact-text {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .reflection-box {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: #fff;
-            padding: 3rem;
-            border-radius: 8px;
-            margin-top: 3rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .reflection-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .reflection-box p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background: #2c3e50;
-            color: #fff;
-            padding: 3rem 3%;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-info {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            line-height: 2;
-            margin-bottom: 1rem;
-        }
-
-        .footer-credits {
-            opacity: 0.7;
-            font-size: 0.85rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        @media (max-width: 1024px) {
-            .phases-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline::before {
-                left: 0;
-            }
-
-            .timeline-dot {
-                left: 0;
-            }
-
-            .timeline-item:nth-child(even) .timeline-content,
-            .timeline-item:nth-child(odd) .timeline-content {
-                grid-column: 1;
-                text-align: left;
-                padding-left: 3rem;
-            }
-
-            .timeline-item:nth-child(even) .timeline-image,
-            .timeline-item:nth-child(odd) .timeline-image {
-                grid-column: 1;
-            }
-
-            .itabira-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .impact-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-quote {
-                font-size: 1.2rem;
-            }
-
-            .site-title {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -523,6 +21,7 @@
                     <li><a href="#fases">Fases Literárias</a></li>
                     <li><a href="#itabira">Itabira & Mineração</a></li>
                     <li><a href="#reflexao">Reflexões</a></li>
+                    <li><a href="#localizacoes">Localizações Drummondianas</a></li>
                 </ul>
             </nav>
         </div>
@@ -532,7 +31,7 @@
         <div class="hero-content">
             <h2 class="hero-title">O Poeta da Pedra</h2>
             <p class="hero-quote">"No meio do caminho tinha uma pedra<br>tinha uma pedra no meio do caminho<br>tinha uma pedra<br>no meio do caminho tinha uma pedra."</p>
-            <p class="hero-author">— Alguma Poesia, 1928</p>
+            <p class="hero-author">— Carlos Drummond de Andrade, 1928</p>
         </div>
     </section>
 
@@ -670,7 +169,7 @@
             <div class="itabira-section">
                 <div class="itabira-grid">
                     <div>
-                        <img src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=600&h=400&fit=crop" alt="Mineração" class="itabira-image">
+                        <img src="img/img8.png" alt="Mineração" class="itabira-image">
                     </div>
                     <div class="itabira-text">
                         <h3>A Cidade Natal</h3>
@@ -686,7 +185,7 @@
                         <p>A mineração representa tanto a riqueza material quanto a devastação ambiental e social. Drummond testemunhou a transformação de sua cidade natal pela indústria mineradora, tema que ganha tons nostálgicos e críticos em seus versos.</p>
                     </div>
                     <div>
-                        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600&h=400&fit=crop" alt="Paisagem mineira" class="itabira-image">
+                        <img src="img/img7.png" alt="Paisagem mineira" class="itabira-image">
                     </div>
                 </div>
 
@@ -807,7 +306,6 @@
                 </div>
             </div>
         </section>
-
         <section class="section">
             <div class="section-header">
                 <h2 class="section-title">Galeria de Imagens</h2>
@@ -824,21 +322,72 @@
                     <p style="font-size: 0.9rem; color: #666;">Paisagens mineiras</p>
                 </div>
                 <div style="text-align: center;">
-                    <img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=400&h=300&fit=crop" alt="Livros de poesia" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <p style="font-size: 0.9rem; color: #666;">A poesia modernista</p>
+                    <img src="img/Itabira-na-decada-de-1930.jpg" alt="Livros de poesia" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; color: #666;">Itabira 1930</p>
                 </div>
                 <div style="text-align: center;">
                     <img src="img/image.png" alt="Interior mineiro" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
                     <p style="font-size: 0.9rem; color: #666;">Interior de Minas Gerais</p>
                 </div>
                 <div style="text-align: center;">
-                    <img src="img/rpp-cinelandiaheader-970x373.jpg" alt="Contexto histórico" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <img src="img/rpp-cinelandiaheader-970x373.jpg" alt="Rio de Janeiro no Séc XX" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
                     <p style="font-size: 0.9rem; color: #666;">Brasil do século XX</p>
                 </div>
                 <div style="text-align: center;">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=300&fit=crop" alt="Céu e nuvens" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <p style="font-size: 0.9rem; color: #666;">A imensidão poética</p>
+                    <img src="img/img4.png" alt="Itabira 2025" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; color: #666;">Itabira 2025</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="section" id="localizacoes">
+            <div class="section-header">
+                <h2 class="section-title">Localizações Drummondianas</h2>
+                <p class="section-subtitle">Conheça os lugares importantes da vida e obra do poeta em Itabira</p>
+            </div>
+
+            <div class="phases-grid">
+                <div class="phase-card">
+                    <h3 class="phase-title">🏛️ Memorial Carlos Drummond de Andrade</h3>
+                    <p class="phase-description">Espaço dedicado à preservação da memória e obra do poeta. O memorial abriga documentos, fotos, manuscritos e objetos pessoais de Drummond.</p>
+                    <a href="https://www.google.com/maps?ll=-19.616063,-43.221377&z=14&t=m&hl=pt-BR&gl=BR&mapclient=embed&cid=2512617873918575855" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 5px; font-family: 'Segoe UI', sans-serif; transition: all 0.3s;">Ver no Mapa</a>
+                </div>
+
+                <div class="phase-card">
+                    <h3 class="phase-title">🏡 Casa de Carlos Drummond de Andrade</h3>
+                    <p class="phase-description">Casa onde o poeta nasceu e passou sua infância em Itabira. Lugar que inspirou muitos de seus poemas memorialistas e que aparece constantemente em sua obra.</p>
+                    <a href="https://www.google.com/maps/place/Casa+de+Carlos+Drummond+de+Andrade/@-19.6182484,-43.2296623,17z/data=!3m1!4b1!4m6!3m5!1s0xa5a1b8c48e7ea1:0xabce0173875fda7d!8m2!3d-19.6182535!4d-43.2270874!16s%2Fg%2F11bw_4fn0b?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 5px; font-family: 'Segoe UI', sans-serif; transition: all 0.3s;">Ver no Mapa</a>
+                </div>
+
+                <div class="phase-card">
+                    <h3 class="phase-title">🌾 Fazenda do Pontal</h3>
+                    <p class="phase-description">Propriedade da família Andrade onde Drummond passou parte de sua infância. A fazenda e o ambiente rural de Itabira marcaram profundamente sua poesia.</p>
+                    <a href="https://www.google.com/maps/place/Fazenda+do+Pontal/@-19.612622,-43.215218,14z/data=!4m6!3m5!1s0xa5a1cd037b0de9:0x8e55e3598e708184!8m2!3d-19.6126217!4d-43.2152185!16s%2Fg%2F1ydnqfvld?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 5px; font-family: 'Segoe UI', sans-serif; transition: all 0.3s;">Ver no Mapa</a>
+                </div>
+
+                <div class="phase-card">
+                    <h3 class="phase-title">📚 Fundação Cultural Carlos Drummond de Andrade</h3>
+                    <p class="phase-description">Instituição dedicada à promoção da cultura e preservação do legado drummondiano. Realiza eventos, exposições e atividades educativas.</p>
+                    <a href="https://www.google.com/maps?ll=-19.622189,-43.224286&z=14&t=m&hl=pt-BR&gl=BR&mapclient=embed&cid=12719562162757757622" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 5px; font-family: 'Segoe UI', sans-serif; transition: all 0.3s;">Ver no Mapa</a>
+                </div>
+
+                <div class="phase-card">
+                    <h3 class="phase-title">🚶 Caminhos Drummondianos</h3>
+                    <p class="phase-description">Roteiro turístico-cultural que percorre os principais lugares relacionados à vida de Drummond em Itabira, proporcionando uma imersão na cidade do poeta.</p>
+                    <a href="https://loc.wiki/t/143105122?wa=sc" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 5px; font-family: 'Segoe UI', sans-serif; transition: all 0.3s;">Ver Roteiro</a>
+                </div>
+
+                <div class="phase-card">
+                    <h3 class="phase-title">🗺️ Mapa de Itabira</h3>
+                    <p class="phase-description">Explore a cidade natal de Drummond, a "cidade de ferro" que tanto influenciou sua obra. Conheça Itabira, Minas Gerais.</p>
+                    <a href="https://google.com/maps/place/Itabira,+MG/data=!4m2!3m1!1s0xa5a113d676be4b:0xa1b1df8c51582d7?sa=X&ved=1t:242&ictx=111" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 5px; font-family: 'Segoe UI', sans-serif; transition: all 0.3s;">Ver no Mapa</a>
+                </div>
+            </div>
+
+            <div class="reflection-box" style="margin-top: 3rem;">
+                <h3>Visite Itabira</h3>
+                <p>Para quem aprecia a obra de Carlos Drummond de Andrade, visitar Itabira é uma experiência transformadora. Caminhar pelas ruas que o poeta percorreu, ver as montanhas de ferro que ele descreveu, sentir a atmosfera da cidade que moldou sua sensibilidade poética – tudo isso proporciona uma compreensão mais profunda de sua obra.</p>
+                <p>Os lugares drummondianos de Itabira não são apenas pontos turísticos, mas verdadeiros portais para a poesia. Cada esquina, cada paisagem carrega em si os versos do poeta que transformou sua cidade natal em literatura universal.</p>
             </div>
         </section>
     </div>
@@ -848,7 +397,7 @@
             <div class="footer-info">
                 <strong>Trabalho Interdisciplinar - 3ª Série Ômega</strong><br>
                 Escola SESI Rinaldo Campos Soares<br>
-                Disciplina: Interdisciplinar (Português e História)<br>
+                Disciplina: Interdisciplinar<br>
                 Professores: Mattheus Rosa e Sarah
             </div>
             <div class="footer-info" style="margin-top: 1.5rem;">
@@ -930,6 +479,46 @@
                 }
             });
         });
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('nav a');
+        
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if(pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.style.background = '';
+            if(link.getAttribute('href') === '#' + current) {
+                link.style.background = 'rgba(255,255,255,0.2)';
+            }
+        });
+    });
+
+    // Efeito de mostrar/esconder header ao rolar
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Rolando para baixo - esconde o header
+            header.style.transform = 'translateY(-100%)';
+            header.style.transition = 'transform 0.3s ease-in-out';
+        } else {
+            // Rolando para cima - mostra o header
+            header.style.transform = 'translateY(0)';
+            header.style.transition = 'transform 0.3s ease-in-out';
+        }
+        
+        lastScrollTop = scrollTop;
+    }, false);
     </script>
 </body>
 </html>
