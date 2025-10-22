@@ -504,3 +504,418 @@ footer {
         padding: 0.3rem 0.6rem;
     }
 }
+/* Tablets (1024px e abaixo) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 3rem 5%;
+    }
+
+    .phases-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-dot {
+        left: 20px;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item:nth-child(even) .timeline-content,
+    .timeline-item:nth-child(odd) .timeline-content {
+        grid-column: 1;
+        text-align: left;
+        padding-left: 3rem;
+    }
+
+    .timeline-item:nth-child(even) .timeline-image,
+    .timeline-item:nth-child(odd) .timeline-image {
+        grid-column: 1;
+    }
+
+    .timeline-image {
+        height: 300px;
+    }
+
+    .itabira-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .itabira-image {
+        height: 300px;
+    }
+
+    .impact-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .hero-section {
+        padding: 6rem 5%;
+        background-attachment: scroll;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* Tablets pequenos e celulares grandes (768px e abaixo) */
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0 5%;
+    }
+
+    .site-title {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+    }
+
+    .site-subtitle {
+        font-size: 0.85rem;
+    }
+
+    nav {
+        margin-top: 0.8rem;
+        padding-top: 0.8rem;
+    }
+
+    nav ul {
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+    }
+
+    nav a {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.7rem;
+        letter-spacing: 0.5px;
+    }
+
+    .hero-section {
+        padding: 4rem 5%;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-quote {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    .hero-author {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 2rem 5%;
+    }
+
+    .section {
+        margin-bottom: 4rem;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .timeline {
+        padding: 1rem 0;
+    }
+
+    .timeline-year {
+        font-size: 1.5rem;
+    }
+
+    .timeline-text {
+        font-size: 1rem;
+    }
+
+    .timeline-image {
+        height: 250px;
+    }
+
+    .phase-card {
+        padding: 2rem;
+    }
+
+    .phase-number {
+        font-size: 2.5rem;
+    }
+
+    .phase-title {
+        font-size: 1.5rem;
+    }
+
+    .phase-period {
+        font-size: 0.85rem;
+    }
+
+    .phase-description {
+        font-size: 1rem;
+    }
+
+    .poem-box {
+        padding: 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .itabira-section {
+        padding: 2rem;
+    }
+
+    .itabira-text {
+        font-size: 1rem;
+    }
+
+    .itabira-text h3 {
+        font-size: 1.4rem;
+    }
+
+    .reflection-box {
+        padding: 2rem;
+    }
+
+    .reflection-box h3 {
+        font-size: 1.5rem;
+    }
+
+    .reflection-box p {
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 2rem 5%;
+    }
+
+    .footer-info {
+        font-size: 0.85rem;
+    }
+}
+
+/* Celulares (480px e abaixo) */
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 1.3rem;
+        letter-spacing: 0.5px;
+    }
+
+    .site-subtitle {
+        font-size: 0.75rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: stretch;
+    }
+
+    nav a {
+        font-size: 0.75rem;
+        padding: 0.6rem;
+        display: block;
+        text-align: center;
+    }
+
+    .hero-section {
+        padding: 3rem 5%;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-quote {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .hero-author {
+        font-size: 0.85rem;
+    }
+
+    .container {
+        padding: 1.5rem 4%;
+    }
+
+    .section {
+        margin-bottom: 3rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .timeline-item {
+        gap: 1rem;
+    }
+
+    .timeline-year {
+        font-size: 1.3rem;
+    }
+
+    .timeline-text {
+        font-size: 0.95rem;
+    }
+
+    .timeline-image {
+        height: 200px;
+    }
+
+    .phase-card {
+        padding: 1.5rem;
+    }
+
+    .phase-number {
+        font-size: 2rem;
+        margin-bottom: -0.5rem;
+    }
+
+    .phase-title {
+        font-size: 1.3rem;
+    }
+
+    .phase-period {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .phase-description {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .phase-themes {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .poem-box {
+        padding: 1.2rem;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .poem-title {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .itabira-section {
+        padding: 1.5rem;
+    }
+
+    .itabira-image {
+        height: 220px;
+    }
+
+    .itabira-text {
+        font-size: 0.95rem;
+    }
+
+    .itabira-text h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .impact-cards {
+        gap: 1rem;
+    }
+
+    .impact-card {
+        padding: 1.5rem;
+    }
+
+    .impact-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .impact-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .impact-text {
+        font-size: 0.9rem;
+    }
+
+    .reflection-box {
+        padding: 1.5rem;
+    }
+
+    .reflection-box h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .reflection-box p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    footer {
+        padding: 1.5rem 5%;
+    }
+
+    .footer-info {
+        font-size: 0.8rem;
+        line-height: 1.8;
+    }
+
+    .footer-credits {
+        font-size: 0.75rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+    }
+
+    /* Ajustes específicos para galeria de imagens */
+    .phases-grid[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    .phases-grid img {
+        height: 200px !important;
+    }
+
+    /* Melhor área de toque para botões */
+    .phase-card a,
+    nav a,
+    .menu-toggle {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
